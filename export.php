@@ -80,7 +80,7 @@ $sql = $zbp->db->sql->Select($GLOBALS['table']['Comment'], 'max(comm_ID)', array
 $sql = $zbp->db->Query($sql);
 $commid = (int) $sql[0]['max(comm_ID)'];
 if ($commid < 1) {
-	$commid = 1;
+    $commid = 1;
 }
 
 $sql = $zbp->db->sql->Select($GLOBALS['table']['plugin_duoshuo_comment'], 'max(ds_cmtid)', null, null, null, null);

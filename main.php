@@ -33,21 +33,21 @@ $duoshuo->init();
   <div id="divMain2">
     <?php
 if ($zbp->config('duoshuo')->short_name == "") {
-	echo '<iframe id="duoshuo-remote-window" src="' . $duoshuo->export_connect_url() . '" style="border:0; width:100%; height:580px;"></iframe>';
+    echo '<iframe id="duoshuo-remote-window" src="' . $duoshuo->export_connect_url() . '" style="border:0; width:100%; height:580px;"></iframe>';
 } else {
-	switch (GetVars("act", "GET")) {
-		case "settings":
-		case "users":
-		case "statistics":
-			echo '<iframe id="duoshuo-remote-window" src="' . $duoshuo->export_admin(GetVars("act", "GET")) . '" style="border:0; width:100%; height:580px;"></iframe>';
-			break;
-		case "setting":
-			require '_setting.inc';
-			break;
-		default:
-			echo '<iframe id="duoshuo-remote-window" src="' . $duoshuo->export_admin(GetVars("act", "GET")) . '" style="border:0; width:100%; height:580px;"></iframe>';
-			break;
-	}
+    switch (GetVars("act", "GET")) {
+        case "settings":
+        case "users":
+        case "statistics":
+            echo '<iframe id="duoshuo-remote-window" src="' . $duoshuo->export_admin(GetVars("act", "GET")) . '" style="border:0; width:100%; height:580px;"></iframe>';
+            break;
+        case "setting":
+            require '_setting.inc';
+            break;
+        default:
+            echo '<iframe id="duoshuo-remote-window" src="' . $duoshuo->export_admin(GetVars("act", "GET")) . '" style="border:0; width:100%; height:580px;"></iframe>';
+            break;
+    }
 }
 ?>
     <script type="text/javascript">ActiveLeftMenu("a<?php echo !isset($_GET['act']) ? 'Comment' : 'Plugin'?>Mng");</script>
