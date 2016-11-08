@@ -66,7 +66,7 @@ class duoshuo_class {
     }
 
     public function export_admin($type) {
-        return 'http://' . $this->cfg->short_name . '.duoshuo.com/admin' . ($type != '' ? '/' . $type : '') . '/?jwt=' . $this->token;
+        return '//' . $this->cfg->short_name . '.duoshuo.com/admin' . ($type != '' ? '/' . $type : '') . '/?jwt=' . $this->token;
     }
 
     public function export_submenu($id) {
@@ -113,7 +113,7 @@ class duoshuo_class {
             $str .= $t_name . '=' . urlencode($t_value) . '&';
         }
 
-        return 'http://duoshuo.com/connect-site/?' . $str;
+        return '//duoshuo.com/connect-site/?' . $str;
     }
 
     public function check_spider() {
@@ -141,13 +141,13 @@ class duoshuo_class {
         }
 
         if ($this->cc_thread_key != "") {
-            $data .= '<script type="text/javascript" src="http://api.duoshuo.com/threads/counts.jsonp';
+            $data .= '<script type="text/javascript" src="//api.duoshuo.com/threads/counts.jsonp';
             $data .= '?short_name=' . urlencode($this->cfg->short_name) . '&threads=' . urlencode($this->cc_thread_key);
             $data .= '&callback=duoshuo_callback&rnd=' . rand() . '"></script>';
             //评论数修正		 批量获取
         }
 
-        $data = '<script type="text/javascript">var duoshuo_callback = function(data){if(data.response){jQuery.each(data.response, function(id, object){jQuery("[duoshuo-id="+id+"]").html(object.comments);})}};var duoshuoQuery = {short_name:"' . $this->cfg->short_name . '"};</script><script type="text/javascript" src="http://static.duoshuo.com/embed.js"></script>' . $data;
+        $data = '<script type="text/javascript">var duoshuo_callback = function(data){if(data.response){jQuery.each(data.response, function(id, object){jQuery("[duoshuo-id="+id+"]").html(object.comments);})}};var duoshuoQuery = {short_name:"' . $this->cfg->short_name . '"};</script><script type="text/javascript" src="//static.duoshuo.com/embed.js"></script>' . $data;
 
         return $data;
     }
